@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Successful</title>
+</head>
+<body>
+    <h1>Booking Successful</h1>
+    <p>Your booking with ID {{ booking_id }} has been successful!</p>
+    <p>Details:</p>
+    <ul>
+        <li>User ID: {{ data.user_id }}</li>
+        <li>User Name: {{ data.user_name }}</li>
+        <li>Hotel Name: {{ data.hotel_name }}</li>
+        <li>Days of Stay: {{ data.days_stay }}</li>
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Booking</title>
+</head>
+<body>
+    <h1>Update Booking</h1>
+    <form method="POST" action="/update/{{ booking_id }}">
+        <label for="user_id">User ID:</label>
+        <input type="text" id="user_id" name="user_id" value="{{ data.user_id }}" required><br>
+
+        <label for="user_name">User Name:</label>
+        <input type="text" id="user_name" name="user_name" value="{{ data.user_name }}" required><br>
+
+        <label for="hotel_name">Hotel Name:</label>
+        <input type="text" id="hotel_name" name="hotel_name" value="{{ data.hotel_name }}" required><br>
+
+        <label for="days_stay">Days of Stay:</label>
+        <input type="number" id="days_stay" name="days_stay" value="{{ data.days_stay }}" required><br>
+
+        <button type="submit">Update Booking</button>
+    </form>
+    <a href="/">Back to Home</a>
+</body>
+</html>

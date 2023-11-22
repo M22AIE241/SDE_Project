@@ -1,0 +1,21 @@
+1. Starting zookeeper
+(my_conda_env) sg95@SG_PC:/mnt/d/SDE/kafka_2.13-3.6.0$ bin/zookeeper-server-start.sh config/zookeeper.properties
+
+2.Starting Kafka server
+#Once Zookeeper has started, you can run the below command in new Ubuntu console
+(my_conda_env) sg95@SG_PC:/mnt/d/SDE/kafka_2.13-3.6.0$ bin/kafka-server-start.sh config/server.properties
+
+3.Listing Kafka Topics
+(my_conda_env) sg95@SG_PC:/mnt/d/SDE/kafka_2.13-3.6.0$ bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+
+4. Creating Kafka Topics
+(my_conda_env) sg95@SG_PC:/mnt/d/SDE/kafka_2.13-3.6.0$  bin/kafka-topics.sh --create --topic test_topic --bootstrap-server localhost:9092
+
+5. Kafka Producer to put messages in Kafka topics
+(my_conda_env) sg95@SG_PC:/mnt/d/SDE/kafka_2.13-3.6.0$ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test_topic
+> insert messages
+>
+
+6. Consuming the Topic and sending messages
+(my_conda_env) sg95@SG_PC:/mnt/d/SDE/kafka_2.13-3.6.0$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092  --topic test_topic --from-beginning
+>inserted messages running producer

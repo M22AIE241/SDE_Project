@@ -1,0 +1,59 @@
+1. Kafka installation:
+                        sudo apt-get update && sudo apt-get upgrade -y
+                        #get your java
+                        sudo apt install openjdk-8-jdk -y
+                        wget https://ftp.wayne.edu/apache/kafka/2.6.0/kafka_2.13-3.6.0.tgz
+                        tar -xzf kafka_2.13-2.6.0.tgz
+                        cd kafka_2.13-2.6.0
+
+2. Snowflake Connector for Kafka: Place these 3 jars in the Libs folder
+                        https://mvnrepository.com/artifact/com.snowflake
+
+                        BouncyCastle Crypotgrahpy library:
+                        https://mvnrepository.com/artifact/org.bouncycastle/bc-fips/1.0.1
+                        https://mvnrepository.com/artifact/org.bouncycastle/bcpkix-fips/1.0.3
+
+3. Generate Private Public Key pairs :
+                        private key : openssl genrsa -out rsa_key.pem 2048
+                        public key  : openssl rsa -in rsa_key.pem -pubout -out rsa_key.pub
+
+
+4. Configuring the Kafka Snowflake Connector :
+                        --Create SF_connect.properties in kafka installation/config folder
+                        --Note the parameters
+connector.class=com.snowflake.kafka.connector.SnowflakeSinkConnector
+tasks.max=8
+topics=topic name
+snowflake.topic2table.map=topic name : table name
+buffer.count.records=10000
+buffer.flush.time=60
+buffer.size.bytes=5000000
+snowflake.url.name=account url
+snowflake.user.name=user name
+snowflake.private.key="Private Key"
+snowflake.database.name=PROJECT_DB
+snowflake.schema.name=PROJECT_SCHEMA
+key.converter=com.snowflake.kafka.connector.records.SnowflakeJsonConverter
+value.converter=com.snowflake.kafka.connector.records.SnowflakeJsonConverter
+name=kafka_snowflake_job
+
+
+5. Configuring Snowflake :
+                        a.Create your account:
+                        https://signup.snowflake.com/
+                        
+                        b.Choose Cloud Provider with the details entered.
+                        c. Login and note the profile URL and USERNAME :
+                        d. create the database and schema , grant privileges as required
+                        e. set rsa public key
+//set rsa_public_key
+alter user SGLEARNING set rsa_public_key='public key';
+
+6. Run kafka-snowflake sink connector :
+                        https://pd51993.central-india.azure.snowflakecomputing.com
+Starting the connector : 
+                        (base) sg95@SG_PC:/mnt/d/SDE/kafka_2.13-3.6.0$ bin/connect-standalone.sh config/connect-standalone.properties config/SF_connect.properties
+
+
+After successful connection we can see that a snowpipe streaming for near real time data ingestion process is being executed, the records will be pushed in json format,
+We can manipulate it to store into our dimension tables.
