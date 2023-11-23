@@ -1,5 +1,10 @@
-1. Code Repository :
+1. Report :         https://drive.google.com/file/d/1EvRKOMN4-jwxIhArFDGVbFUgVwChK7DB/view?usp=sharing
+
+2. Code Repository :
                     https://github.com/M22AIE241/SDE_Project
-2. Demo_recording  :
-                    https://drive.google.com/file/d/1D4JzcFZfFY0Ixy3zw8PH04Wdk_YcPMF8/view?usp=sharing
-                    
+
+3. Presentation    :
+                    https://drive.google.com/file/d/1w_Imd16HZTTAkOOpc8WzuNk7NyvMd1oB/view?usp=sharing
+
+4. Demo_recording  :
+                    https://drive.google.com/file/d/1D4JzcFZfFY0Ixy3zw8PH04Wdk_YcPMF8/view?usp=sharing                    
